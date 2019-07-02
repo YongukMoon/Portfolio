@@ -36,6 +36,7 @@ class UsersController extends Controller
 
         event(new \App\Events\UserCreated($user));
 
+        flash('Please check your email');
         return redirect('/');
     }
 
@@ -43,6 +44,7 @@ class UsersController extends Controller
         $user=\App\User::whereConfirmCode($code)->first();
 
         if(!$user){
+            flash('Url fail');
             return redirect('/');
         }
 
@@ -50,6 +52,7 @@ class UsersController extends Controller
         $user->confirm_code=null;
         $user->save();
 
+        flash('Register success');
         return redirect('/');
     }
 }
