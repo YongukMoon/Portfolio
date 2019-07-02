@@ -33,4 +33,21 @@ class UsersEventListeners
             $message->subject('user confirm email');
         });
     }
+
+    public function subscribe(\Illuminate\Events\Dispatcher $events){
+        $events->listen(
+            \App\Events\PasswordResetCreated::class,
+            __CLASS__.'@onPasswordResetCreated'
+        );
+    }
+
+    public function onPasswordResetCreated(\App\Events\PasswordResetCreated $event){
+        $token=$event->token;
+        $email=$event->email;
+
+        \Mail::send('emails.passwords.remind', compact('token'), function($message)use($email){
+            $message->to($email);
+            $message->subject('password reset');
+        });
+    }
 }
