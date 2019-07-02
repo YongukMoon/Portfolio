@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('auth/register', [
+    'as'=>'users.create',
+    'uses'=>'UsersController@create'
+]);
+
+Route::post('auth/register', [
+    'as'=>'users.store',
+    'uses'=>'UsersController@store'
+]);

@@ -993,8 +993,6 @@ var app = new Vue({
   el: '#app'
 });
 
-hljs.initHighlightingOnLoad();
-
 /***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
