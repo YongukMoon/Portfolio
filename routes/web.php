@@ -68,3 +68,9 @@ Route::get('auth/logout', [
     'as'=>'sessions.destroy',
     'uses'=>'SessionsController@destroy'
 ]);
+
+//Social login
+Route::get('social/{provider}', [
+    'as'=>'social.login',
+    'uses'=>'SocialController@execute'
+]);

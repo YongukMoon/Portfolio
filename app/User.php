@@ -30,4 +30,8 @@ class User extends Authenticatable
     protected $casts = [
         'activated'=>'boolean',
     ];
+
+    public function scopeSocialUser($query, $email){
+        return $query->whereEmail($email)->whereNull('password');
+    }
 }
