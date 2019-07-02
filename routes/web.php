@@ -51,3 +51,20 @@ Route::post('auth/reset', [
     'as'=>'reset.store',
     'uses'=>'PasswordsController@postReset'
 ]);
+
+//Login
+Route::get('auth/login', [
+    'as'=>'sessions.create',
+    'uses'=>'SessionsController@create'
+]);
+
+Route::post('auth/login', [
+    'as'=>'sessions.store',
+    'uses'=>'SessionsController@store'
+]);
+
+//Logout
+Route::get('auth/logout', [
+    'as'=>'sessions.destroy',
+    'uses'=>'SessionsController@destroy'
+]);
