@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    public function __construct(){
+        $this->middleware('guest');
+    }
+
     public function create(){
         return view('auth.users.create');
     }
@@ -19,14 +23,33 @@ class UsersController extends Controller
             'address'=>'max:255|nullable',
         ]);
 
+        $confirmCode=str_random(60);
+
         $user=\App\User::create([
             'name'=>$request->input('name'),
             'email'=>$request->input('email'),
             'password'=>bcrypt($request->input('password')),
             'phone_number'=>$request->input('phone_number'),
             'address'=>$request->input('address'),
+            'confirm_code'=>$confirmCode,
         ]);
 
-        dd($user);
+        event(new \App\Events\UserCreated($user));
+
+        return redirect('/');
+    }
+
+    public function confirm($code){
+        $user=\App\User::whereConfirmCode($code)->first();
+
+        if(!$user){
+            return redirect('/');
+        }
+
+        $user->activated=1;
+        $user->confirm_code=null;
+        $user->save();
+
+        return redirect('/');
     }
 }

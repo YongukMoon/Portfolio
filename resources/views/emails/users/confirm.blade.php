@@ -1,0 +1,1 @@
+<a href="{{ route('users.confirm', $user->confirm_code) }}">Email confirm</a>

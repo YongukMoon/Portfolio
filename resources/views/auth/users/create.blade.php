@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email 이 Login 하실때 ID 가 됩니다. (필수)">
+                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email 이 Login ID 가 됩니다. (필수)">
                     {!! $errors->first('email', '<span class="text-danger">:message</span>') !!}
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="form-group">
                 <label for="address" class="col-sm-2 control-label">Address</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="address" value="{{ old('adress') }}" placeholder="Address (선택)">
+                    <input type="text" class="form-control" name="address" value="{{ old('address') }}" placeholder="Address (선택)">
                     {!! $errors->first('address', '<span class="text-danger">:message</span>') !!}
                 </div>
             </div>
