@@ -45,5 +45,9 @@
                 </div>
             </div>
         </form>
+        <hr>
+        <div class="social text-center">
+            Social login : <a href="{{ route('social.login', ['provider'=>'github']) }}">Github</a>
+        </div>
     </div>
 @endsection

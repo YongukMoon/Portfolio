@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-7">
-                    <button type="submit" class="btn btn-default">Remind</button>
+                    <button type="submit" class="btn btn-default">Send authentication email</button>
                 </div>
             </div>
         </form>

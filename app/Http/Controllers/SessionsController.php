@@ -38,6 +38,6 @@ class SessionsController extends Controller
     public function destroy(){
         auth()->logout();
         flash('See you later');
-        return redirect('/');
+        return redirect(route('sessions.create'));
     }
 }

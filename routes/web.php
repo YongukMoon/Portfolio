@@ -31,6 +31,28 @@ Route::get('auth/confirm/{code}', [
     'uses'=>'UsersController@confirm'
 ])->where('code', '[\pL-\pN]{60}');
 
+//User profile
+Route::get('users/{user}/edit', [
+    'as'=>'users.edit',
+    'uses'=>'UsersController@edit'
+]);
+
+Route::patch('users/{user}', [
+    'as'=>'users.update',
+    'uses'=>'UsersController@update'
+]);
+
+//Password update
+Route::get('passwords/{user}/edit', [
+    'as'=>'passwords.edit',
+    'uses'=>'UsersController@getPassword'
+]);
+
+Route::patch('passwords/{user}', [
+    'as'=>'passwords.update',
+    'uses'=>'UsersController@postPassword'
+]);
+
 //Password remind
 Route::get('auth/remind', [
     'as'=>'remind.create',
