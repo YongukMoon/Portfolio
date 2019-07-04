@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="login">
+    <div class="login col-md-8 col-md-offset-2">
         <div class="page-header">
             <h2 class="text-center">
                 Login

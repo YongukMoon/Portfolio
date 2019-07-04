@@ -96,3 +96,6 @@ Route::get('social/{provider}', [
     'as'=>'social.login',
     'uses'=>'SocialController@execute'
 ]);
+
+//Article
+Route::resource('articles', 'ArticlesController');

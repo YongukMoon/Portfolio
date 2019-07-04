@@ -9,5 +9,6 @@ $factory->define(App\Article::class, function (Faker $faker) {
         'user_id'=>$faker->randomElement($userIds),
         'title'=>$faker->sentence(),
         'content'=>$faker->paragraph(),
+        'created_at'=>$faker->dateTimeBetween('-1 months'),
     ];
 });

@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
+use App\Http\Requests\ArticlesRequest;
 
 class ArticlesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth', ['except'=>['index', 'show']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,9 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        $articles=\App\Article::latest()->paginate(5);
+
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -23,7 +31,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -32,9 +40,17 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticlesRequest $request)
     {
-        //
+        $article=auth()->user()->articles()->create($request->all());
+
+        if(!$article){
+            flash('Article store fail');
+            return redirect(route('articles.create'));
+        }
+
+        flash('Article store success');
+        return redirect(route('articles.index'));
     }
 
     /**
@@ -43,9 +59,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        //
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -54,9 +70,9 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -66,9 +82,12 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticlesRequest $request, Article $article)
     {
-        //
+        $article->update($request->all());
+
+        flash('Article update success');
+        return redirect(route('articles.show', $article->id));
     }
 
     /**
@@ -77,8 +96,11 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+        flash('article delete success');
+        return response()->json([], 204);
     }
 }

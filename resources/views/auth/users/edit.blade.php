@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="edit">
+    <div class="edit col-md-8 col-md-offset-2">
         <div class="page-header">
             <h2 class="text-center">User edit</h2>
         </div>
