@@ -13,8 +13,14 @@
     
         <div class="text-center">
             <div class="btn-group" role="group">
-                <a href="{{ route('articles.edit', $article->id) }}" type="button" class="btn btn-default">Edit</a>
-                <button type="button" class="btn btn-default article__delete">Delete</button>
+                @can('update', $article)
+                    <a href="{{ route('articles.edit', $article->id) }}" type="button" class="btn btn-default">Edit</a>
+                @endcan
+                
+                @can('delete', $article)
+                    <button type="button" class="btn btn-default article__delete">Delete</button>
+                @endcan
+
                 <a href="{{ route('articles.index') }}" type="button" class="btn btn-default">Index</a>
             </div>
         </div>

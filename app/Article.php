@@ -10,6 +10,10 @@ class Article extends Model
         'user_id', 'title', 'content',
     ];
 
+    protected $with=[
+        'user',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

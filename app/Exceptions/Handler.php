@@ -50,4 +50,13 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+
+    public function unauthenticated($request, \Illuminate\Auth\AuthenticationException $exception){
+        if($request->expectsJson()){
+            return response()->json(['error'=>'Unauthenticated.'], 401);
+        }
+
+        flash('Login is required');
+        return redirect(route('sessions.create'));
+    }
 }

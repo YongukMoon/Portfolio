@@ -29,9 +29,9 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Article $article)
     {
-        return view('articles.create');
+        return view('articles.create', compact('article'));
     }
 
     /**
@@ -72,6 +72,8 @@ class ArticlesController extends Controller
      */
     public function edit(Article $article)
     {
+        $this->authorize('update', $article);
+
         return view('articles.edit', compact('article'));
     }
 
@@ -98,6 +100,7 @@ class ArticlesController extends Controller
      */
     public function destroy(Article $article)
     {
+        $this->authorize('delete', $article);
         $article->delete();
 
         flash('article delete success');
