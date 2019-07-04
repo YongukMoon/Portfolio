@@ -1,3 +1,7 @@
+@php
+    $viewName='articles.index';
+@endphp
+
 @extends('layouts.master')
 
 @section('content')
@@ -6,20 +10,22 @@
             <h2>Article list</h2>
         </div>
 
-        <article>
-            <div class="text-right">
-                <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">Create</a>
-            </div>
+        <div class="text-right">
+            <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">Create</a>
+        </div>
 
+        @include('tags.index')
+
+        <article class="col-md-10">
             @forelse ($articles as $article)
                 @include('articles.partial.article')
             @empty
                 <p class="text-danger">Empty</p>
             @endforelse
-
-            <div class="text-center">
-                {{ $articles->appends(Request::except('page'))->render() }}
-            </div>
         </article>
+
+        <div class="text-center">
+            {{ $articles->appends(Request::except('page'))->render() }}
+        </div>
     </div>
 @endsection

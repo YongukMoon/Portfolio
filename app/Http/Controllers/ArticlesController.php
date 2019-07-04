@@ -17,9 +17,13 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug='')
     {
-        $articles=\App\Article::latest()->paginate(5);
+        $query=$slug
+        ? \App\Tag::whereSlug($slug)->firstOrFail()->articles()
+        : new \App\Article;
+
+        $articles=$query->latest()->paginate(5);
 
         return view('articles.index', compact('articles'));
     }
@@ -48,6 +52,8 @@ class ArticlesController extends Controller
             flash('Article store fail');
             return redirect(route('articles.create'));
         }
+
+        $article->tags()->sync($request->input('tags'));
 
         flash('Article store success');
         return redirect(route('articles.index'));
@@ -87,6 +93,7 @@ class ArticlesController extends Controller
     public function update(ArticlesRequest $request, Article $article)
     {
         $article->update($request->all());
+        $article->tags()->sync($request->input('tags'));
 
         flash('Article update success');
         return redirect(route('articles.show', $article->id));

@@ -99,3 +99,9 @@ Route::get('social/{provider}', [
 
 //Article
 Route::resource('articles', 'ArticlesController');
+
+//Tag
+Route::get('articles/{slug}/tags', [
+    'as'=>'articles.tags',
+    'uses'=>'ArticlesController@index'
+]);

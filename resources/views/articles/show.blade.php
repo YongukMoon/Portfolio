@@ -1,3 +1,7 @@
+@php
+    $viewName='articles.show';
+@endphp
+
 @extends('layouts.master')
 
 @section('content')
@@ -10,6 +14,8 @@
             @include('articles.partial.article')
             {!! markdown($article->content) !!}
         </article>
+
+        @include('tags.partial.list')
     
         <div class="text-center">
             <div class="btn-group" role="group">
