@@ -107,6 +107,11 @@ class UsersController extends Controller
     }
 
     public function getPassword(User $user){
+        if($user->password == null){
+            flash('Social users do not have a password');
+            return redirect('/');
+        }
+
         return view('auth.passwords.edit', compact('user'));
     }
 
