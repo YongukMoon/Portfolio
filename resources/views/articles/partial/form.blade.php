@@ -12,7 +12,7 @@
 
 <div class="form-group">
     <label for="tags">Tag</label>
-    <select name="tags[]" class="form-control" multiple="multiple">
+    <select name="tags[]" id="tags" class="form-control" multiple="multiple">
         @foreach ($allTags as $tag)
             <option value="{{ $tag->id }}" {{ $article->tags->contains($tag->id) ? 'selected="selected"' : '' }}>
                 {{ $tag->name }}
@@ -20,3 +20,13 @@
         @endforeach
     </select>
 </div>
+
+@section('script')
+    @parent
+    <script>
+        $('#tags').select2({
+            placeholder: '태그를 선택하세요 (최대 3개)',
+            maximumSelectionLength: 3
+        });
+    </script>
+@endsection

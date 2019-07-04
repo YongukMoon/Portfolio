@@ -18,6 +18,8 @@
     "jquery": "^3.2",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
+    "select2": "^4.0.7",
+    "select2-bootstrap-css": "^1.4.6",
     "vue": "^2.5.7"
   }
 }
