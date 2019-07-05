@@ -108,3 +108,7 @@ Route::get('articles/{slug}/tags', [
 
 //Attachment
 Route::resource('attachments', 'AttachmentsController', ['only'=>['store', 'destroy']]);
+
+//Comment
+Route::resource('comments', 'CommentsController', ['only'=>['update', 'destroy']]);
+Route::resource('articles.comments', 'CommentsController', ['only'=>'store']);

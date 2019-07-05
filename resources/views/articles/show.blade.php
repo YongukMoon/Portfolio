@@ -30,6 +30,12 @@
                 <a href="{{ route('articles.index') }}" type="button" class="btn btn-default">Index</a>
             </div>
         </div>
+
+        <hr>
+
+        <div class="comment__container">
+            @include('comments.index')
+        </div>
     </div>
 @endsection
 

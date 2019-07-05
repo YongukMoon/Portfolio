@@ -26,3 +26,15 @@ if(!function_exists('format_filesize')){
         return round($bytes, 2).$suffix[$step];
     }
 }
+
+if(!function_exists('gravatar_url')){
+    function gravatar_url($email, $size){
+        return sprintf('//www.gravatar.com/avatar/%s?s=%s', md5($email), $size);
+    }
+}
+
+if(!function_exists('gravatar_profile_url')){
+    function gravatar_profile_url($email){
+        return sprintf('//www.gravatar.com/%s', md5($email));
+    }
+}
