@@ -15,7 +15,7 @@
             {!! markdown($article->content) !!}
         </article>
 
-        @include('tags.partial.list')
+        @include('tags.partial.list', ['tags'=>$article->tags])
     
         <div class="text-center">
             <div class="btn-group" role="group">

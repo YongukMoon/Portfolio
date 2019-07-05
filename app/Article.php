@@ -12,6 +12,7 @@ class Article extends Model
 
     protected $with=[
         'user',
+        'tags',
     ];
 
     public function user(){

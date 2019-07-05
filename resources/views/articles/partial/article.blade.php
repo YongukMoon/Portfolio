@@ -3,6 +3,6 @@
     <p>{{ $article->user->name }} ({{ $article->created_at->timezone('Asia/Seoul') }})</p>
 
     @if ($viewName==='articles.index')
-        @include('tags.partial.list')
+        @include('tags.partial.list', ['tags'=>$article->tags])
     @endif
 </div>
