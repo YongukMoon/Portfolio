@@ -1,3 +1,7 @@
+@php
+    $viewName='articles.create';
+@endphp
+
 @extends('layouts.master')
 
 @section('content')

@@ -107,6 +107,6 @@ class AttachmentsController extends Controller
 
         $attachment->delete();
 
-        return response()->json([], 201);
+        return response()->json($attachment, 201);
     }
 }

@@ -24,6 +24,10 @@
 <div class="form-group">
     <label for="my-dropzone">File</label>
     <div id="my-dropzone" class="dropzone"></div>
+
+    @if ($viewName==='articles.edit')
+        @include('attachments.partial.list', ['attachments'=>$article->attachments])
+    @endif
 </div>
 
 @section('script')

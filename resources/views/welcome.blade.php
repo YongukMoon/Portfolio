@@ -8,6 +8,12 @@
             text-align: center;
             font-family: 'Poiret One', cursive;
         }
+
+        @media (max-width: 500px) {
+            .main_title {
+                font-size: 2.5em;
+            }
+        }
     </style>
 @endsection
 

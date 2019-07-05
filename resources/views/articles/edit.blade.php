@@ -1,3 +1,7 @@
+@php
+    $viewName='articles.edit';
+@endphp
+
 @extends('layouts.master')
 
 @section('content')
@@ -17,4 +21,22 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('script')
+    @parent
+    <script>
+        $('.attachment_delete').on('click', function(e){
+            if(confirm('Image delete ?')){
+                var self=$(this);
+
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/attachments/'+self.data('id')
+                }).then(function(){
+                    self.parent('li').fadeOut();
+                });
+            }
+        });
+    </script>
 @endsection
