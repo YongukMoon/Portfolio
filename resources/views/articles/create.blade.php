@@ -6,7 +6,7 @@
             <h2>Article create</h2>
         </div>
 
-        <form action="{{ route('articles.store') }}" method="post">
+        <form action="{{ route('articles.store') }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             @include('articles.partial.form')

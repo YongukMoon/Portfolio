@@ -21,6 +21,11 @@
     </select>
 </div>
 
+<div class="form-group">
+    <label for="files">File</label>
+    <input type="file" name="files[]" class="form-control" multiple="multiple">
+</div>
+
 @section('script')
     @parent
     <script>
