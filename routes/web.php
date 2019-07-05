@@ -105,3 +105,6 @@ Route::get('articles/{slug}/tags', [
     'as'=>'articles.tags',
     'uses'=>'ArticlesController@index'
 ]);
+
+//Attachment
+Route::resource('attachments', 'AttachmentsController', ['only'=>['store', 'destroy']]);

@@ -55,20 +55,10 @@ class ArticlesController extends Controller
 
         $article->tags()->sync($request->input('tags'));
 
-        if($request->hasFile('files')){
-            $files=$request->file('files');
-            
-            foreach($files as $file){
-                $filename=str_random().filter_var($file->getClientOriginalName(), FILTER_SANITIZE_URL);
-                $file->move(attachments_path(), $filename);
-
-                $article->attachments()->create([
-                    'filename'=>$filename,
-                    'bytes'=>$file->getClientSize(),
-                    'mime'=>$file->getClientMimeType(),
-                ]);
-            }
-        }
+        $request->getAttachments()->each(function($attachment)use($article){
+            $attachment->article()->associate($article);
+            $attachment->save();
+        });
 
         flash('Article store success');
         return redirect(route('articles.index'));

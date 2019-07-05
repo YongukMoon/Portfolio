@@ -25,6 +25,14 @@ class DatabaseSeeder extends Seeder
         DB::table('article_tag')->truncate();
         $this->call(TagsTableSeeder::class);
 
+        $path=attachments_path();
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 775, true);
+        }
+        File::cleanDirectory($path);
+        \App\Attachment::truncate();
+        $this->call(AttachmentsTableSeeder::class);
+
         if(config('database.default')){
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }

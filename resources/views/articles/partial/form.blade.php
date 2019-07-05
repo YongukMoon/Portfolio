@@ -22,8 +22,8 @@
 </div>
 
 <div class="form-group">
-    <label for="files">File</label>
-    <input type="file" name="files[]" class="form-control" multiple="multiple">
+    <label for="my-dropzone">File</label>
+    <div id="my-dropzone" class="dropzone"></div>
 </div>
 
 @section('script')
@@ -32,6 +32,33 @@
         $('#tags').select2({
             placeholder: '태그를 선택하세요 (최대 3개)',
             maximumSelectionLength: 3
+        });
+
+        Dropzone.autoDiscover=false;
+
+        var myDropzone=new Dropzone('div#my-dropzone', {
+            url: '/attachments',
+            paramName: 'files',
+            maxFilesize: 3,
+            acceptedFile: '.jpeg,.jpg,.png,.zip,.tar',
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            params: {
+                _token: $('meta[name="csrf-token"]').attr('content'),
+                article_id: '{{ $article->id }}'
+            }
+        });
+
+        var form=$('.container').find('form');
+
+        myDropzone.on('successmultiple', function(file,data){
+            for(var i=0, len=data.length; i<len; i++){
+                $("<input>", {
+                    type: 'hidden',
+                    name: 'attachments[]',
+                    value: data[i].id
+                }).appendTo(form);
+            }
         });
     </script>
 @endsection

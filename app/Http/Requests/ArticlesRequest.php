@@ -28,4 +28,8 @@ class ArticlesRequest extends FormRequest
             'content'=>'required|min:10',
         ];
     }
+
+    public function getAttachments(){
+        return \App\Attachment::whereIn('id', $this->input('attachments', []))->get();
+    }
 }
