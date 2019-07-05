@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2>Article Edit</h2>
+            <h2>Post Edit</h2>
         </div>
 
         <form action="{{ route('articles.update', $article->id) }}" method="post" enctype="multipart/form-data">

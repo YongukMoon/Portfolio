@@ -12,5 +12,8 @@
 @endsection
 
 @section('content')
-    <h1 class="main_title">Yonguk Moon Portfolio</h1>
+    <div class="main_title">
+        <p>Yonguk Moon Portfolio</p>
+        <p>Personal Tech Blog</p>
+    </div>
 @endsection

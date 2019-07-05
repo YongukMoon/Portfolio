@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2>Article create</h2>
+            <h2>Post create</h2>
         </div>
 
         <form action="{{ route('articles.store') }}" method="post" enctype="multipart/form-data">

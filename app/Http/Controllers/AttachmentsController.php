@@ -97,8 +97,16 @@ class AttachmentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Attachment $attachment)
     {
-        //
+        $file=attachments_path($attachment->filename);
+
+        if(\File::exists($file)){
+            \File::delete($file);
+        }
+
+        $attachment->delete();
+
+        return response()->json([], 201);
     }
 }

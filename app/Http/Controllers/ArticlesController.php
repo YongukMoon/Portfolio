@@ -113,9 +113,22 @@ class ArticlesController extends Controller
     public function destroy(Article $article)
     {
         $this->authorize('delete', $article);
+        $this->attachmentsDelete($article);
         $article->delete();
 
         flash('article delete success');
         return response()->json([], 204);
+    }
+
+    protected function attachmentsDelete(Article $article){
+        $article->attachments->each(function($attachment){
+            $file=attachments_path($attachment->filename);
+
+            if(\File::exists($file)){
+                \File::delete($file);
+            }
+
+            $attachment->delete();
+        });
     }
 }

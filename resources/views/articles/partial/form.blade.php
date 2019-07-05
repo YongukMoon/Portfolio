@@ -58,7 +58,18 @@
                     name: 'attachments[]',
                     value: data[i].id
                 }).appendTo(form);
+
+                file[i].id=data[i].id;
             }
+        });
+
+        myDropzone.on('removedfile', function(file){
+            $('input[name="attachments[]"][value="'+file.id+'"]').remove();
+
+            $.ajax({
+                type: 'DELETE',
+                url: '/attachments/'+file.id
+            });
         });
     </script>
 @endsection
