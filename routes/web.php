@@ -112,3 +112,9 @@ Route::resource('attachments', 'AttachmentsController', ['only'=>['store', 'dest
 //Comment
 Route::resource('comments', 'CommentsController', ['only'=>['update', 'destroy']]);
 Route::resource('articles.comments', 'CommentsController', ['only'=>'store']);
+
+//Vote
+Route::post('comments/{comment}/votes', [
+    'as'=>'comments.votes',
+    'uses'=>'CommentsController@vote'
+]);

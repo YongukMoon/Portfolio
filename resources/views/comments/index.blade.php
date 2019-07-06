@@ -1,5 +1,3 @@
-@include('comments.partial.create')
-
 @section('style')
     @parent
     <style>
@@ -11,6 +9,14 @@
         }
     </style>
 @endsection
+
+@if (isset($currentUser))
+    @include('comments.partial.create')
+@else
+    <p><a href="{{ route('sessions.create') }}">Sign-in</a> is required to create comments and up-downs.</p>
+@endif
+
+<hr>
 
 <div class="comment__list">
     @forelse ($comments as $comment)
@@ -49,6 +55,23 @@
                     self.closest('.media').remove();
                 })
             }
+        });
+
+        $('.comment__vote').on('click', function(e){
+            var self=$(this);
+            var commentId=self.closest('.comment').data('id');
+
+            $.ajax({
+                type: 'POST',
+                url: '/comments/'+commentId+'/votes',
+                data: {
+                    vote: self.data('vote')
+                }
+            }).then(function(data){
+                self.find('span').html(data.value).fadeIn();
+                self.attr('disabled', 'disabled');
+                self.siblings('.comment__vote').attr('disabled', 'disabled');
+            });
         });
     </script>
 @endsection

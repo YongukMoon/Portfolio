@@ -11,7 +11,11 @@ class Comment extends Model
     ];
 
     protected $with=[
-        'user',
+        'user', 'votes',
+    ];
+
+    protected $appends=[
+        'up_count', 'down_count',
     ];
 
     public function user(){
@@ -28,5 +32,17 @@ class Comment extends Model
 
     public function commentable(){
         return $this->morphTo();
+    }
+
+    public function votes(){
+        return $this->hasMany(Vote::class);
+    }
+
+    public function getUpCountAttribute(){
+        return (int) $this->votes()->sum('up');
+    }
+
+    public function getDownCountAttribute(){
+        return (int) $this->votes()->sum('down');
     }
 }

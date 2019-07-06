@@ -36,6 +36,9 @@ class DatabaseSeeder extends Seeder
         \App\Comment::truncate();
         $this->call(CommentsTableSeeder::class);
 
+        \App\Vote::truncate();
+        $this->call(VotesTableSeeder::class);
+
         if(config('database.default')){
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }

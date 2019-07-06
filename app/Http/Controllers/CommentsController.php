@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Requests\CommentsRequest;
 
@@ -72,7 +73,7 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CommentsRequest $request, \App\Comment $comment)
+    public function update(CommentsRequest $request, Comment $comment)
     {
         $comment->update($request->all());
 
@@ -85,10 +86,33 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(\App\Comment $comment)
+    public function destroy(Comment $comment)
     {
         $comment->delete();
 
         return response()->json([], 201);
+    }
+
+    public function vote(Request $request, Comment $comment){
+        $this->validate($request, [
+            'vote'=>'required|in:up,down',
+        ]);
+
+        if($comment->votes()->whereUserId($request->user()->id)->exists()){
+            return response()->json(['error'=>'already_voted'], 401);
+        }
+
+        $up=($request->input('vote') == 'up') ? true : false;
+
+        $comment->votes()->create([
+            'user_id'=>request()->user()->id,
+            'up'=>$up,
+            'down'=>!$up,
+            'voted_at'=>\Carbon\Carbon::now(),
+        ]);
+
+        return response()->json([
+            'value'=>$comment->votes()->sum($request->input('vote'))
+        ]);
     }
 }
