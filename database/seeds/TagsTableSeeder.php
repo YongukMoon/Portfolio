@@ -25,8 +25,8 @@ class TagsTableSeeder extends Seeder
 
         foreach($articles as $article){
             $article->tags()->sync(
-                $faker->randomElement(
-                    \App\Tag::pluck('id')->toArray(), rand(1, 7)
+                $faker->randomElements(
+                    \App\Tag::pluck('id')->toArray(), rand(1,3)
                 )
             );
         }

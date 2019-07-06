@@ -20,7 +20,7 @@
             <div class="form-group">
                 <label for="email" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-7">
-                    <span class="form-control">{{ $user->email }}</span>
+                    <p class="form-control-static">{{ $user->email }}</p>
                 </div>
             </div>
             <div class="form-group">

@@ -72,9 +72,11 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CommentsRequest $request, \App\Comment $comment)
     {
-        //
+        $comment->update($request->all());
+
+        return redirect(route('articles.show', $comment->commentable->id).'#comment_'.$comment->id);
     }
 
     /**
@@ -83,8 +85,10 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(\App\Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return response()->json([], 201);
     }
 }

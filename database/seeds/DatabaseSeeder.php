@@ -33,6 +33,9 @@ class DatabaseSeeder extends Seeder
         \App\Attachment::truncate();
         // $this->call(AttachmentsTableSeeder::class);
 
+        \App\Comment::truncate();
+        $this->call(CommentsTableSeeder::class);
+
         if(config('database.default')){
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }

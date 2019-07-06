@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media create">
     <div class="media-left">
         @include('auth.users.partial.avatar', ['user'=>$currentUser, 'size'=>32])
     </div>
@@ -11,7 +11,7 @@
             @endif
 
             <textarea name="content" class="form-control">{{ old('content') }}</textarea>
-            <button type="submit" class="btn btn-default">Store</button>
+            <button type="submit" class="btn btn-default btn-sm">Store</button>
         </form>
     </div>
 </div>
