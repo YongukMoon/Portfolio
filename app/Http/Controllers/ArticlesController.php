@@ -88,6 +88,9 @@ class ArticlesController extends Controller
         ->whereNull('parent_id')
         ->get();
 
+        $article->view_count += 1;
+        $article->save();
+
         return view('articles.show', compact('article', 'comments'));
     }
 
