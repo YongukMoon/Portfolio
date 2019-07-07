@@ -19,6 +19,8 @@ class ArticlesController extends Controller
      */
     public function index(Request $request, $slug='')
     {
+        $cacheKey=cache_key('articles.index.'.$slug);
+
         $query=$slug
         ? \App\Tag::whereSlug($slug)->firstOrFail()->articles()
         : new \App\Article;
@@ -33,7 +35,8 @@ class ArticlesController extends Controller
             $query=$query->whereRaw($raw, [$keyword]);
         }
 
-        $articles=$query->paginate(5);
+        //$articles=$query->paginate(5);
+        $articles=$this->cache($cacheKey, 5, $query, 'paginate', 5);
 
         return view('articles.index', compact('articles'));
     }
@@ -74,6 +77,8 @@ class ArticlesController extends Controller
             $attachment->article()->associate($article);
             $attachment->save();
         });
+
+        event(new \App\Events\Modelchanged('articles'));
 
         flash('Article store success');
         return redirect(route('articles.index'));
@@ -131,6 +136,8 @@ class ArticlesController extends Controller
         $article->update($payload);
         $article->tags()->sync($request->input('tags'));
 
+        event(new \App\Events\Modelchanged('articles'));
+
         flash('Article update success');
         return redirect(route('articles.show', $article->id));
     }
@@ -146,6 +153,8 @@ class ArticlesController extends Controller
         $this->authorize('delete', $article);
         $this->attachmentsDelete($article);
         $article->delete();
+
+        event(new \App\Events\Modelchanged('articles'));
 
         flash('article delete success');
         return response()->json([], 204);

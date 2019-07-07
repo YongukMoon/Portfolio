@@ -20,6 +20,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\CommentCreated' => [
             'App\Listeners\CommentsEventListeners',
         ],
+
+        'App\Events\Modelchanged' => [
+            'App\Listeners\CacheHandler',
+        ],
     ];
 
     protected $subscribe = [

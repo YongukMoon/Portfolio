@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'cache'=>true,
+    
     'tags'=>[
         'laravel'=>'라라벨',
         'php'=>'피에치피',
