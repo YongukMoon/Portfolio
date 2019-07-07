@@ -11,5 +11,6 @@ $factory->define(App\Attachment::class, function (Faker $faker) {
         'filename'=>File::basename($path),
         'bytes'=>File::size($path),
         'mime'=>File::mimeType($path),
+        //'created_at'=>$faker->dateTimeBetween('-1 months'),
     ];
 });

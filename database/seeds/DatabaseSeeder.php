@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         }
         File::cleanDirectory($path);
         \App\Attachment::truncate();
-        // $this->call(AttachmentsTableSeeder::class);
+        $this->call(AttachmentsTableSeeder::class);
 
         \App\Comment::truncate();
         $this->call(CommentsTableSeeder::class);
