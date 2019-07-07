@@ -16,6 +16,10 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\UserCreated' => [
             'App\Listeners\UsersEventListeners',
         ],
+
+        'App\Events\CommentCreated' => [
+            'App\Listeners\CommentsEventListeners',
+        ],
     ];
 
     protected $subscribe = [

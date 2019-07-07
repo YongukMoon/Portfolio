@@ -56,7 +56,12 @@ class ArticlesController extends Controller
      */
     public function store(ArticlesRequest $request)
     {
-        $article=auth()->user()->articles()->create($request->all());
+        $payload=array_merge(
+            $request->all(),
+            ['notification'=>$request->has('notification')]
+        );
+
+        $article=auth()->user()->articles()->create($payload);
 
         if(!$article){
             flash('Article store fail');
@@ -116,7 +121,12 @@ class ArticlesController extends Controller
      */
     public function update(ArticlesRequest $request, Article $article)
     {
-        $article->update($request->all());
+        $payload=array_merge(
+            $request->all(),
+            ['notification'=>$request->has('notification')]
+        );
+
+        $article->update($payload);
         $article->tags()->sync($request->input('tags'));
 
         flash('Article update success');

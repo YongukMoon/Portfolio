@@ -41,6 +41,8 @@ class CommentsController extends Controller
             ['user_id'=>auth()->user()->id]
         ));
 
+        //event(new \App\Events\CommentCreated($comment));
+
         return redirect(route('articles.show', $article->id).'#comment_'.$comment->id);
     }
 

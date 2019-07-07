@@ -30,6 +30,11 @@
     @endif
 </div>
 
+<div class="form-group">
+    <label for="notification">Comment notification</label>
+    <input type="checkbox" name="notification" value="{{ old('notification', 1) }}" checked>
+</div>
+
 @section('script')
     @parent
     <script>
