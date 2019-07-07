@@ -6,10 +6,15 @@ use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticlesRequest;
 
-class ArticlesController extends Controller
+class ArticlesController extends Controller implements Cacheable
 {
     public function __construct(){
+        parent::__construct();
         $this->middleware('auth', ['except'=>['index', 'show']]);
+    }
+
+    public function cacheTags(){
+        return 'articles';
     }
     
     /**
@@ -35,7 +40,6 @@ class ArticlesController extends Controller
             $query=$query->whereRaw($raw, [$keyword]);
         }
 
-        //$articles=$query->paginate(5);
         $articles=$this->cache($cacheKey, 5, $query, 'paginate', 5);
 
         return view('articles.index', compact('articles'));

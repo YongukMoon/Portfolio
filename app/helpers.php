@@ -78,3 +78,9 @@ if(!function_exists('cache_key')){
         return md5($key);
     }
 }
+
+if(!function_exists('taggable')){
+    function taggable(){
+        return in_array(config('cache.default'), ['memcached', 'redis'], true);
+    }
+}
