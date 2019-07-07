@@ -21,7 +21,9 @@
 <div class="comment__list">
     @forelse ($comments as $comment)
         @include('comments.partial.comment', [
-            'parentId'=>$comment->id
+            'parentId'=>$comment->id,
+            'hasChild'=>$comment->replies->count(),
+            'isTrashed'=>$comment->trashed(),
         ])
     @empty
         

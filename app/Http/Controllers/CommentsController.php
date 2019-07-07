@@ -90,7 +90,12 @@ class CommentsController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $comment->delete();
+        if($comment->replies->count()>0){
+            $comment->delete();
+        }else{
+            $comment->votes()->delete();
+            $comment->forceDelete();
+        }
 
         return response()->json([], 201);
     }

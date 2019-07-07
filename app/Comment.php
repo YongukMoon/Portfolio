@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    use \Illuminate\Database\Eloquent\SoftDeletes;
+
     protected $fillable=[
         'user_id', 'parent_id', 'commentable_type', 'commentable_id', 'content',
     ];
@@ -18,12 +20,17 @@ class Comment extends Model
         'up_count', 'down_count',
     ];
 
+    protected $dates=[
+        'deleted_at',
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
 
     public function replies(){
-        return $this->hasMany(Comment::class, 'parent_id');
+        //대댓글 softDeletes 적용
+        return $this->hasMany(Comment::class, 'parent_id')->withTrashed()->latest();
     }
 
     public function parent(){

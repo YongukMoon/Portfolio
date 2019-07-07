@@ -90,7 +90,9 @@ class ArticlesController extends Controller
         $comments=$article
         ->comments()
         ->with('replies')
+        ->withTrashed()
         ->whereNull('parent_id')
+        ->latest()
         ->get();
 
         $article->view_count += 1;
