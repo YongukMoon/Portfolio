@@ -10,4 +10,9 @@ return [
         'javascript'=>'자바스크립트',
         'jquery'=>'제이쿼리',
     ],
+
+    'sorting'=>[
+        'view_count'=>'조회수',
+        'created_at'=>'작성일',
+    ],
 ];

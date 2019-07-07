@@ -11,7 +11,23 @@
         </div>
 
         <div class="text-right">
-            <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">Create</a>
+            <div class="btn-group" role="group">
+                <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">Create</a>
+              
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sort
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        {{-- <li><a href="#">Dropdown link</a></li>
+                        <li><a href="#">Dropdown link</a></li> --}}
+                        @foreach (config('project.sorting') as $column => $text)
+                            <li>{!! link_for_sort($column, $text) !!}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
         </div>
 
         @include('tags.index')

@@ -17,13 +17,23 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($slug='')
+    public function index(Request $request, $slug='')
     {
         $query=$slug
         ? \App\Tag::whereSlug($slug)->firstOrFail()->articles()
         : new \App\Article;
 
-        $articles=$query->latest()->paginate(5);
+        $query=$query->orderBy(
+            $request->input('sort', 'created_at'),
+            $request->input('order', 'desc')
+        );
+
+        if($keyword=$request->input('q')){
+            $raw='MATCH(title,content) AGAINST(? IN BOOLEAN MODE)';
+            $query=$query->whereRaw($raw, [$keyword]);
+        }
+
+        $articles=$query->paginate(5);
 
         return view('articles.index', compact('articles'));
     }
