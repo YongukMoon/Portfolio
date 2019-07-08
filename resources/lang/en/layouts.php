@@ -7,7 +7,6 @@ return [
 
     'nav'=>[
         'articles_link'=>'Tech Blog',
-        'btn_search'=>'Search',
         'search_placeholder'=>'Search',
         'btn_logout'=>'Logout',
         'btn_login'=>'Login',

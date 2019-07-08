@@ -51,7 +51,7 @@
         <div class="social text-center">
             {{ trans('users.sessions.social_login') }} : 
             <a href="{{ route('social.login', ['provider'=>'github']) }}">
-                {{ trans('users.sessions.social_github_link') }}
+                <i class="fa fa-github" aria-hidden="true"></i> {{ trans('users.sessions.social_github_link') }}
             </a>
         </div>
     </div>

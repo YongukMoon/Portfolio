@@ -7,7 +7,6 @@ return [
 
     'nav'=>[
         'articles_link'=>'기술 블로그',
-        'btn_search'=>'검색',
         'search_placeholder'=>'검색어를 입력하세요.',
         'btn_logout'=>'로그아웃',
         'btn_login'=>'로그인',

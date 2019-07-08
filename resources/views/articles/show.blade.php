@@ -21,18 +21,18 @@
             <div class="btn-group" role="group">
                 @can('update', $article)
                     <a href="{{ route('articles.edit', $article->id) }}" type="button" class="btn btn-default">
-                        {{ trans('articles.show.edit') }}
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('articles.show.edit') }}
                     </a>
                 @endcan
                 
                 @can('delete', $article)
                     <button type="button" class="btn btn-default article__delete">
-                        {{ trans('articles.show.delete') }}
+                        <i class="fa fa-trash" aria-hidden="true"></i> {{ trans('articles.show.delete') }}
                     </button>
                 @endcan
 
                 <a href="{{ route('articles.index') }}" type="button" class="btn btn-default">
-                    {{ trans('articles.show.index') }}
+                    <i class="fa fa-list" aria-hidden="true"></i> {{ trans('articles.show.index') }}
                 </a>
             </div>
         </div>

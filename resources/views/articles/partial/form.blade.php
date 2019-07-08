@@ -19,6 +19,7 @@
             </option>
         @endforeach
     </select>
+    {!! $errors->first('tags', '<span>:message</span>') !!}
 </div>
 
 <div class="form-group">

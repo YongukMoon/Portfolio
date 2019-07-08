@@ -5,12 +5,12 @@
     
     <p>
         <small>
-            {{ $article->user->name }}
-            ({{ $article->created_at->timezone('Asia/Seoul') }})
-            {{ trans('articles.article.view_count') }} {{ $article->view_count }}
+            <i class="fa fa-user" aria-hidden="true"></i> {{ $article->user->name }}
+            ( <i class="fa fa-clock-o" aria-hidden="true"></i> {{ $article->created_at->timezone('Asia/Seoul') }})
+            <i class="fa fa-eye" aria-hidden="true"></i> {{ trans('articles.article.view_count') }} {{ $article->view_count }}
 
             @if ($article->comment_count)
-                / {{ trans('articles.article.comment_count') }} {{ $article->comment_count }}
+                <i class="fa fa-comments" aria-hidden="true"></i> {{ trans('articles.article.comment_count') }} {{ $article->comment_count }}
             @endif
         </small>
     </p>

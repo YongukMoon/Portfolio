@@ -13,7 +13,7 @@
         <div class="text-right">
             <div class="btn-group" role="group">
                 <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">
-                    {{ trans('articles.index.create') }}
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('articles.index.create') }}
                 </a>
               
                 <div class="btn-group" role="group">
