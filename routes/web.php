@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
+
+//Locale
+Route::get('locale', [
+    'as'=>'locale',
+    'uses'=>'WelcomeController@locale'
+]);
 
 //User register
 Route::get('auth/register', [

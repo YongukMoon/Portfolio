@@ -13,6 +13,7 @@ return [
         'btn_profile'=>'개인정보',
         'btn_pw_change'=>'비밀번호 변경',
         'btn_register'=>'가입하기',
+        'language'=>'한국어',
     ],
 
     'footer'=>[

@@ -13,7 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        app()->setLocale('ko');
+        if($locale=request()->cookie('locale__myapp')){
+            app()->setLocale(\Crypt::decryptString($locale));
+        }
 
         \Carbon\Carbon::setLocale(app()->getLocale());
         
@@ -22,8 +24,10 @@ class AppServiceProvider extends ServiceProvider
                 return \App\Tag::all();
             });
             $currentUser=auth()->user();
+            $currentLocale=app()->getLocale();
+            $currentUrl=request()->fullUrl();
 
-            $view->with(compact('allTags', 'currentUser'));
+            $view->with(compact('allTags', 'currentUser', 'currentLocale', 'currentUrl'));
         });
     }
 

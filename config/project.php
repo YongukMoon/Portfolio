@@ -17,4 +17,9 @@ return [
         'view_count'=>'조회수',
         'created_at'=>'작성일',
     ],
+
+    'locales'=>[
+        'ko'=>'한국어',
+        'en'=>'English',
+    ],
 ];

@@ -42,9 +42,14 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa fa-language"></i> {{ app()->getLocale() }} <span class="caret"></span>
+                        <i class="fa fa-language"></i> {{ trans('layouts.nav.language') }} <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+                        @foreach (config('project.locales') as $locale => $language)
+                            <li {!! ($locale==$currentLocale) ? 'class="active"' : '' !!}>
+                                <a href="{{ route('locale', ['locale'=>$locale, 'return'=>urlencode($currentUrl)]) }}">{{ $language }}</a>
+                            </li>
+                        @endforeach
                         {{-- <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
                         <li><a href="#">Something else here</a></li>
