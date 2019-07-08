@@ -11,7 +11,9 @@
             @endif
 
             <textarea name="content" class="form-control">{{ old('content') }}</textarea>
-            <button type="submit" class="btn btn-default btn-sm">Store</button>
+            <button type="submit" class="btn btn-default btn-sm">
+                {{ trans('comments.create.submit') }}
+            </button>
         </form>
     </div>
 </div>

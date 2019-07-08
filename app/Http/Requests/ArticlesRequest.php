@@ -26,6 +26,9 @@ class ArticlesRequest extends FormRequest
         return [
             'title'=>'required|min:10',
             'content'=>'required|min:10',
+            'tags'=>'required|array',
+            'files'=>'array',
+            'files.*'=>'mimes:jpeg,jpg,png,zip,tar|max:30000',
         ];
     }
 

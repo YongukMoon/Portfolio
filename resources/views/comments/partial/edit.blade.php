@@ -8,7 +8,9 @@
             {{ method_field('PATCH') }}
 
             <textarea name="content" class="form-control">{{ old('content', $comment->content) }}</textarea>
-            <button type="submit" class="btn btn-default btn-sm">Update</button>
+            <button type="submit" class="btn btn-default btn-sm">
+                {{ trans('comments.edit.submit') }}
+            </button>
         </form>
     </div>
 </div>

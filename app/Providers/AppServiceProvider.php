@@ -13,6 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        app()->setLocale('ko');
+
+        \Carbon\Carbon::setLocale(app()->getLocale());
+        
         view()->composer('*', function($view){
             $allTags=\Cache::rememberForever('tags.list', function(){
                 return \App\Tag::all();

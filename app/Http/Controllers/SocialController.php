@@ -29,7 +29,7 @@ class SocialController extends Controller
         ]);
 
         auth()->login($user);
-        flash('Welcome');
+        flash(trans('flash.SessionsController.store_success'));
         return redirect('/');
     }
 }

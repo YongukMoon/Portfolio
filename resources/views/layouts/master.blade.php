@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     @yield('style')
 
-    <title>Portfolio</title>
+    <title>{{ trans('layouts.master.title') }}</title>
 </head>
 <body>
     <div id="app">

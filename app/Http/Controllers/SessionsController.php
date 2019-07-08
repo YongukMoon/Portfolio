@@ -21,23 +21,23 @@ class SessionsController extends Controller
         ]);
 
         if(!auth()->attempt($request->only('email', 'password'), $request->input('remember'))){
-            flash('Login fail');
+            flash()->error(trans('flash.SessionsController.store_fail'));
             return redirect(route('sessions.create'))->withInput();
         }
 
         if(!auth()->user()->activated){
             auth()->logout();
-            flash('Please email confirm');
+            flash()->error(trans('flash.SessionsController.store_confirm'));
             return redirect('/')->withInput();
         }
 
-        flash('Welcome');
+        flash(trans('flash.SessionsController.store_success'));
         return redirect('/');
     }
 
     public function destroy(){
         auth()->logout();
-        flash('See you later');
+        flash(trans('flash.SessionsController.destroy'));
         return redirect(route('sessions.create'));
     }
 }

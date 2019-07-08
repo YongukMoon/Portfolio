@@ -1,5 +1,5 @@
 <div class="col-md-2">
-    <h4><i class="fa fa-tag"></i> Tag</h4>
+    <h4><i class="fa fa-tag"></i> {{ trans('articles.tags.title') }}</h4>
     <ul class="list-unstyled">
         @foreach ($allTags as $tag)
             <li>

@@ -26,7 +26,7 @@ class PasswordsController extends Controller
 
         event(new \App\Events\PasswordResetCreated($token, $email));
 
-        flash('Please check your email');
+        flash(trans('flash.PasswordsController.postRemind'));
         return redirect('/');
     }
 
@@ -43,7 +43,7 @@ class PasswordsController extends Controller
         $resetUser=\DB::table('password_resets')->whereToken($request->input('token'))->first();
 
         if(!$resetUser){
-            flash('Url fail');
+            flash()->error(trans('flash.PasswordsController.postReset_fail'));
             return redirect('/');
         }
 
@@ -53,7 +53,7 @@ class PasswordsController extends Controller
 
         \DB::table('password_resets')->whereEmail($resetUser->email)->delete();
 
-        flash('Password reset success');
+        flash(trans('flash.PasswordsController.postReset'));
         return redirect('/');
     }
 }

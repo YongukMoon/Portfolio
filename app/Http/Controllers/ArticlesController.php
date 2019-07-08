@@ -71,7 +71,7 @@ class ArticlesController extends Controller implements Cacheable
         $article=auth()->user()->articles()->create($payload);
 
         if(!$article){
-            flash('Article store fail');
+            flash()->error(trans('flash.ArticlesController.store_fail'));
             return redirect(route('articles.create'));
         }
 
@@ -84,7 +84,7 @@ class ArticlesController extends Controller implements Cacheable
 
         event(new \App\Events\Modelchanged('articles'));
 
-        flash('Article store success');
+        flash(trans('flash.ArticlesController.store'));
         return redirect(route('articles.index'));
     }
 
@@ -142,7 +142,7 @@ class ArticlesController extends Controller implements Cacheable
 
         event(new \App\Events\Modelchanged('articles'));
 
-        flash('Article update success');
+        flash(trans('flash.ArticlesController.update'));
         return redirect(route('articles.show', $article->id));
     }
 
@@ -160,7 +160,7 @@ class ArticlesController extends Controller implements Cacheable
 
         event(new \App\Events\Modelchanged('articles'));
 
-        flash('article delete success');
+        flash(trans('flash.ArticlesController.destroy'));
         return response()->json([], 204);
     }
 

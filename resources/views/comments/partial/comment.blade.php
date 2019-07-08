@@ -14,12 +14,17 @@
             @include('auth.users.partial.avatar', ['size'=>32])
         </div>
         <div class="media-body">
-            <div class="media-heading">Unknown user ({{ $comment->created_at->timezone('Asia/Seoul') }})</div>
-            <p class="text-danger">Delete comment ...</p>
+            <div class="media-heading">
+                {{ trans('comments.comment.unknown_user') }}
+                ({{ $comment->created_at->timezone('Asia/Seoul') }})
+            </div>
+            <p class="text-danger">{{ trans('comments.comment.delete_comment') }}</p>
 
             <div class="comment__action btn-group btn-group-sm" role="group">
                 @if ($comment->replies->count() > 0)
-                    <button type="button" class="comment__view btn btn-default">Reply view</button>
+                    <button type="button" class="comment__view btn btn-default">
+                        {{ trans('comments.comment.btn_view') }}
+                    </button>
                 @endif
             </div>
     
@@ -45,28 +50,36 @@
     
             <div class="comment__action btn-group btn-group-sm" role="group">
                 <button type="button" class="comment__vote btn btn-default" data-vote="up" {{ $voted }}>
-                    Up
+                    <i class="fa fa-thumbs-up"></i>
                     <span>{{ $comment->up_count }}</span>
                 </button>
                 <button type="button" class="comment__vote btn btn-default" data-vote="down" {{ $voted }}>
-                    Down
+                    <i class="fa fa-thumbs-down"></i>
                     <span>{{ $comment->down_count }}</span>
                 </button>
     
                 @can('update', $comment)
-                    <button type="button" class="comment__edit btn btn-default">Edit</button>
+                    <button type="button" class="comment__edit btn btn-default">
+                        {{ trans('comments.comment.btn_edit') }}
+                    </button>
                 @endcan
                 
                 @can('delete', $comment)
-                    <button type="button" class="comment__delete btn btn-default">Delete</button>
+                    <button type="button" class="comment__delete btn btn-default">
+                        {{ trans('comments.comment.btn_delete') }}
+                    </button>
                 @endcan
                 
                 @if (isset($currentUser))
-                    <button type="button" class="comment__create btn btn-default">Reply create</button>
+                    <button type="button" class="comment__create btn btn-default">
+                        {{ trans('comments.comment.btn_create') }}
+                    </button>
                 @endif
     
                 @if ($comment->replies->count() > 0)
-                    <button type="button" class="comment__view btn btn-default">Reply view</button>
+                    <button type="button" class="comment__view btn btn-default">
+                        {{ trans('comments.comment.btn_view') }}
+                    </button>
                 @endif
             </div>
     

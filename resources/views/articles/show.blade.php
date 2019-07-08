@@ -20,14 +20,20 @@
         <div class="text-center">
             <div class="btn-group" role="group">
                 @can('update', $article)
-                    <a href="{{ route('articles.edit', $article->id) }}" type="button" class="btn btn-default">Edit</a>
+                    <a href="{{ route('articles.edit', $article->id) }}" type="button" class="btn btn-default">
+                        {{ trans('articles.show.edit') }}
+                    </a>
                 @endcan
                 
                 @can('delete', $article)
-                    <button type="button" class="btn btn-default article__delete">Delete</button>
+                    <button type="button" class="btn btn-default article__delete">
+                        {{ trans('articles.show.delete') }}
+                    </button>
                 @endcan
 
-                <a href="{{ route('articles.index') }}" type="button" class="btn btn-default">Index</a>
+                <a href="{{ route('articles.index') }}" type="button" class="btn btn-default">
+                    {{ trans('articles.show.index') }}
+                </a>
             </div>
         </div>
 

@@ -8,7 +8,7 @@ Laravel Framework 5.5.45
 1.User profile edit,update  
 2.User password edit,update  
 3.Add phone_number,address to user model  
-4.Add attachment delete button to article edit form
+4.Add attachment delete button to article edit form  
 5.Apply replies() softDeletes
   
 참조 : 라라벨로 배우는 실전 PHP 웹 프로그래밍 (김주원님 지음)  

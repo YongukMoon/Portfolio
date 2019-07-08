@@ -1,17 +1,17 @@
 <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" name="title" class="form-control" value="{{ old('title', $article->title) }}" placeholder="Title">
+    <label for="title">{{ trans('articles.form.title') }}</label>
+    <input type="text" name="title" class="form-control" value="{{ old('title', $article->title) }}" placeholder="{{ trans('articles.form.title') }}">
     {!! $errors->first('title', '<span>:message</span>') !!}
 </div>
 
 <div class="form-group">
-    <label for="content">Content</label>
-    <textarea name="content" class="form-control" cols="30" rows="10" placeholder="Content">{{ old('content', $article->content) }}</textarea>
+    <label for="content">{{ trans('articles.form.content') }}</label>
+    <textarea name="content" class="form-control" cols="30" rows="10" placeholder="{{ trans('articles.form.content') }}">{{ old('content', $article->content) }}</textarea>
     {!! $errors->first('content', '<span>:message</span>') !!}
 </div>
 
 <div class="form-group">
-    <label for="tags">Tag</label>
+    <label for="tags">{{ trans('articles.form.tag') }}</label>
     <select name="tags[]" id="tags" class="form-control" multiple="multiple">
         @foreach ($allTags as $tag)
             <option value="{{ $tag->id }}" {{ $article->tags->contains($tag->id) ? 'selected="selected"' : '' }}>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="form-group">
-    <label for="my-dropzone">File</label>
+    <label for="my-dropzone">{{ trans('articles.form.file') }}</label>
     <div id="my-dropzone" class="dropzone"></div>
 
     @if ($viewName==='articles.edit')
@@ -31,7 +31,7 @@
 </div>
 
 <div class="form-group">
-    <label for="notification">Comment notification</label>
+    <label for="notification">{{ trans('articles.form.notification') }}</label>
     <input type="checkbox" name="notification" value="{{ old('notification', 1) }}" checked>
 </div>
 
@@ -39,7 +39,7 @@
     @parent
     <script>
         $('#tags').select2({
-            placeholder: '태그를 선택하세요 (최대 3개)',
+            placeholder: '{{ trans("articles.form.tagsPlaceholder") }}',
             maximumSelectionLength: 3
         });
 

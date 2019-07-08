@@ -7,16 +7,18 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2>Post list</h2>
+            <h2>{{ trans('articles.index.title') }}</h2>
         </div>
 
         <div class="text-right">
             <div class="btn-group" role="group">
-                <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">Create</a>
+                <a href="{{ route('articles.create') }}" type="button" class="btn btn-default">
+                    {{ trans('articles.index.create') }}
+                </a>
               
                 <div class="btn-group" role="group">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sort
+                        {{ trans('articles.index.sort') }}
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
@@ -36,7 +38,7 @@
             @forelse ($articles as $article)
                 @include('articles.partial.article')
             @empty
-                <p class="text-danger">Empty</p>
+                <p class="text-danger">{{ trans('articles.index.empty') }}</p>
             @endforelse
         </article>
 

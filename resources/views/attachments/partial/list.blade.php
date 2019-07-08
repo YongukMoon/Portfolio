@@ -7,7 +7,9 @@
             </a>
 
             @if ($viewName==='articles.edit')
-                <button type="button" class="attachment_delete btn btn-danger btn-xs" data-id="{{ $attachment->id }}">Delete</button>
+                <button type="button" class="attachment_delete btn btn-danger btn-xs" data-id="{{ $attachment->id }}">
+                    {{ trans('articles.attachments.submit') }}
+                </button>
             @endif
         </li>
     @endforeach

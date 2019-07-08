@@ -43,7 +43,7 @@ class UsersController extends Controller
         ]);
 
         auth()->login($user);
-        flash('Welcome');
+        flash(trans('flash.SessionsController.store_success'));
         return redirect('/');
     }
 
@@ -69,7 +69,7 @@ class UsersController extends Controller
 
         event(new \App\Events\UserCreated($user));
 
-        flash('Please check your email');
+        flash(trans('flash.UsersController.createNativeAccount'));
         return redirect('/');
     }
 
@@ -85,7 +85,7 @@ class UsersController extends Controller
         $user->confirm_code=null;
         $user->save();
 
-        flash('Register success');
+        flash(trans('flash.UsersController.confirm'));
         return redirect('/');
     }
 
@@ -108,7 +108,7 @@ class UsersController extends Controller
 
     public function getPassword(User $user){
         if($user->password == null){
-            flash('Social users do not have a password');
+            flash()->error(trans('flash.UsersController.getPassword'));
             return redirect('/');
         }
 
@@ -127,7 +127,7 @@ class UsersController extends Controller
         ]);
 
         if(!$validate){
-            flash('The original password is incorrect');
+            flash()->error(trans('flash.UsersController.postPassword_fail'));
             return redirect(route('passwords.edit', $user->id));
         }
 
@@ -135,7 +135,7 @@ class UsersController extends Controller
             'password'=>bcrypt($request->input('new_password'))
         ]);
 
-        flash('Password change success');
+        flash(trans('flash.UsersController.postPassword_success'));
         return redirect('/');
     }
 }

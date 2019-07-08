@@ -7,10 +7,10 @@
         <small>
             {{ $article->user->name }}
             ({{ $article->created_at->timezone('Asia/Seoul') }})
-            조회수 {{ $article->view_count }}
+            {{ trans('articles.article.view_count') }} {{ $article->view_count }}
 
             @if ($article->comment_count)
-                / 댓글수 {{ $article->comment_count }}
+                / {{ trans('articles.article.comment_count') }} {{ $article->comment_count }}
             @endif
         </small>
     </p>

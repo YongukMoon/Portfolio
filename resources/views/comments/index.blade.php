@@ -13,7 +13,10 @@
 @if (isset($currentUser))
     @include('comments.partial.create')
 @else
-    <p><a href="{{ route('sessions.create') }}">Sign-in</a> is required to create comments and up-downs.</p>
+    <p>
+        <a href="{{ route('sessions.create') }}">{{ trans('comments.index.login_link') }}</a>
+        {{ trans('comments.index.login') }}
+    </p>
 @endif
 
 <hr>
