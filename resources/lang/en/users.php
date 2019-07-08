@@ -17,7 +17,7 @@ return [
     ],
 
     'edit'=>[
-        'title'=>'Edit',
+        'title'=>'Profile',
         'submit'=>'Update',
     ],
 

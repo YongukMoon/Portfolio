@@ -29,10 +29,11 @@ class CommentsEventListeners
         $comment=$event->comment;
         $comment->load('commentable');
         $to=$this->recipients($comment);
+        $view='emails.'.app()->getLocale().'.comments.create';
 
-        \Mail::send('emails.comments.create', compact('comment'), function($message)use($to){
+        \Mail::send($view, compact('comment'), function($message)use($to){
             $message->to($to);
-            $message->subject('Comment created');
+            $message->subject(trans('email.CommentsEventListeners.CommentCreated'));
         });
     }
 

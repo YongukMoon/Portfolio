@@ -4,7 +4,7 @@
     <div class="login col-md-8 col-md-offset-2">
         <div class="page-header">
             <h2 class="text-center">
-                {{ trans('users.sessions.title') }}
+                <i class="fa fa-sign-in" aria-hidden="true"></i> {{ trans('users.sessions.title') }}
             </h2>
         </div>
 

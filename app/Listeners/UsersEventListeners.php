@@ -27,10 +27,11 @@ class UsersEventListeners
     public function handle(UserCreated $event)
     {
         $user=$event->user;
+        $view='emails.'.app()->getLocale().'.users.confirm';
 
-        \Mail::send('emails.users.confirm', compact('user'), function($message)use($user){
+        \Mail::send($view, compact('user'), function($message)use($user){
             $message->to($user->email);
-            $message->subject('user confirm email');
+            $message->subject(trans('email.UsersEventListeners.UserCreated'));
         });
     }
 
@@ -44,10 +45,11 @@ class UsersEventListeners
     public function onPasswordResetCreated(\App\Events\PasswordResetCreated $event){
         $token=$event->token;
         $email=$event->email;
+        $view='emails.'.app()->getLocale().'.passwords.remind';
 
-        \Mail::send('emails.passwords.remind', compact('token'), function($message)use($email){
+        \Mail::send($view, compact('token'), function($message)use($email){
             $message->to($email);
-            $message->subject('password reset');
+            $message->subject(trans('email.UsersEventListeners.PasswordResetCreated'));
         });
     }
 }

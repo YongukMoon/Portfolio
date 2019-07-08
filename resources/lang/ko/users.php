@@ -17,7 +17,7 @@ return [
     ],
 
     'edit'=>[
-        'title'=>'수정',
+        'title'=>'개인정보',
         'submit'=>'수정',
     ],
 

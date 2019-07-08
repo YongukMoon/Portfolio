@@ -3,7 +3,9 @@
 @section('content')
     <div class="register col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2 class="text-center">{{ trans('users.create.title') }}</h2>
+            <h2 class="text-center">
+                <i class="fa fa-user-plus" aria-hidden="true"></i> {{ trans('users.create.title') }}
+            </h2>
         </div>
 
         <form class="form-horizontal" method="post" action="{{ route('users.store') }}">

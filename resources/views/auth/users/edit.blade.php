@@ -3,7 +3,9 @@
 @section('content')
     <div class="edit col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2 class="text-center">{{ trans('users.edit.title') }}</h2>
+            <h2 class="text-center">
+                <i class="fa fa-address-card" aria-hidden="true"></i> {{ trans('users.edit.title') }}
+            </h2>
         </div>
 
         <form class="form-horizontal" method="post" action="{{ route('users.update', $user->id) }}">
