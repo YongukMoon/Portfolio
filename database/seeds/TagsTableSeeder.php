@@ -13,9 +13,11 @@ class TagsTableSeeder extends Seeder
     {
         $tags=config('project.tags');
 
-        foreach($tags as $slug => $name){
+        foreach(transpose_array($tags) as $slug => $names){
             \App\Tag::create([
-                'name'=>$name,
+                'name'=>$names['ko'],
+                'ko'=>$names['ko'],
+                'en'=>$names['en'],
                 'slug'=>str_slug($slug),
             ]);
         }

@@ -14,7 +14,7 @@
     @include('comments.partial.create')
 @else
     <p>
-        <a href="{{ route('sessions.create') }}">{{ trans('comments.index.login_link') }}</a>
+        <a href="{{ route('sessions.create', ['return'=>urlencode($currentUrl)]) }}">{{ trans('comments.index.login_link') }}</a>
         {{ trans('comments.index.login') }}
     </p>
 @endif

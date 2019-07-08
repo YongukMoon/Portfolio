@@ -98,3 +98,17 @@ if(!function_exists('current_url')){
         );
     }
 }
+
+if(!function_exists('transpose_array')){
+    function transpose_array($data){
+        $res=[];
+
+        foreach($data as $row => $columns){
+            foreach($columns as $row2 => $column2){
+                $res[$row2][$row]=$column2;
+            }
+        }
+
+        return $res;
+    }
+}

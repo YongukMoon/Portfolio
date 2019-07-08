@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler
             return response()->json(['error'=>'Unauthenticated.'], 401);
         }
 
-        flash('Login is required');
+        flash()->error(trans('auth.exception'));
         return redirect(route('sessions.create'));
     }
 }

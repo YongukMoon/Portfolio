@@ -22,8 +22,6 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        {{-- <li><a href="#">Dropdown link</a></li>
-                        <li><a href="#">Dropdown link</a></li> --}}
                         @foreach (config('project.sorting') as $column => $text)
                             <li>{!! link_for_sort($column, $text) !!}</li>
                         @endforeach
@@ -32,9 +30,11 @@
             </div>
         </div>
 
-        @include('tags.index')
+        <div class="col-md-3">
+            @include('tags.index')
+        </div>
 
-        <article class="col-md-10">
+        <article class="col-md-9">
             @forelse ($articles as $article)
                 @include('articles.partial.article')
             @empty
