@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
             });
             $currentUser=auth()->user();
             $currentLocale=app()->getLocale();
-            $currentUrl=request()->fullUrl();
+            $currentUrl=current_url();
 
             $view->with(compact('allTags', 'currentUser', 'currentLocale', 'currentUrl'));
         });

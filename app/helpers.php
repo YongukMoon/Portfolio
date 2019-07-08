@@ -84,3 +84,17 @@ if(!function_exists('taggable')){
         return in_array(config('cache.default'), ['memcached', 'redis'], true);
     }
 }
+
+if(!function_exists('current_url')){
+    function current_url(){
+        if(!request()->has('return')){
+            return request()->fullUrl();
+        }
+
+        return sprintf(
+            '%s?%s',
+            request()->url(),
+            http_build_query(request()->except('return'))
+        );
+    }
+}

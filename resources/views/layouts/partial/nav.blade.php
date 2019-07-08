@@ -14,7 +14,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('articles.index') }}">{{ trans('layouts.nav.articles_link') }} <span class="sr-only">(current)</span></a></li>
+                <li class="active">
+                    <a href="{{ route('articles.index') }}">
+                        {{ trans('layouts.nav.articles_link') }} <span class="sr-only">(current)</span>
+                    </a>
+                </li>
                 {{-- <li><a href="#">Link</a></li> --}}
             </ul>
             <form class="navbar-form navbar-left" action="{{ route('articles.index') }}" method="get">
@@ -26,18 +30,40 @@
             <ul class="nav navbar-nav navbar-right">
                 @if ($user=Auth::user())
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-o" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user-o" aria-hidden="true"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route('sessions.destroy') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> {{ trans('layouts.nav.btn_logout') }}</a></li>
-                            <li><a href="{{ route('users.edit', $user->id) }}"><i class="fa fa-address-card" aria-hidden="true"></i> {{ trans('layouts.nav.btn_profile') }}</a></li>
-                            <li><a href={{ route('passwords.edit', $user->id) }}><i class="fa fa-key" aria-hidden="true"></i> {{ trans('layouts.nav.btn_pw_change') }}</a></li>
+                            <li>
+                                <a href="{{ route('sessions.destroy') }}">
+                                    <i class="fa fa-sign-out" aria-hidden="true"></i> {{ trans('layouts.nav.btn_logout') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('users.edit', $user->id) }}">
+                                    <i class="fa fa-address-card" aria-hidden="true"></i> {{ trans('layouts.nav.btn_profile') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href={{ route('passwords.edit', $user->id) }}>
+                                    <i class="fa fa-key" aria-hidden="true"></i> {{ trans('layouts.nav.btn_pw_change') }}
+                                </a>
+                            </li>
                             {{-- <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li> --}}
                         </ul>
                     </li>
                 @else
-                    <li><a href="{{ route('sessions.create') }}"><i class="fa fa-sign-in" aria-hidden="true"></i> {{ trans('layouts.nav.btn_login') }}</a></li>
-                    <li><a href="{{ route('users.create') }}"><i class="fa fa-user-plus" aria-hidden="true"></i> {{ trans('layouts.nav.btn_register') }}</a></li>
+                    <li>
+                        <a href="{{ route('sessions.create', ['return'=>urlencode($currentUrl)]) }}">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> {{ trans('layouts.nav.btn_login') }}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('users.create') }}">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i> {{ trans('layouts.nav.btn_register') }}
+                        </a>
+                    </li>
                 @endif
 
                 <li class="dropdown">

@@ -32,7 +32,10 @@ class SessionsController extends Controller
         }
 
         flash(trans('flash.SessionsController.store_success'));
-        return redirect('/');
+        //return redirect('/');
+
+        return ($return=request('return'))
+        ? redirect(urldecode($return)) : redirect()->intended('home');
     }
 
     public function destroy(){

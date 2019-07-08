@@ -11,6 +11,10 @@
         <form class="form-horizontal" method="post" action="{{ route('sessions.store') }}">
             {{ csrf_field() }}
 
+            @if ($return=request('return'))
+                <input type="hidden" name="return" value="{{ $return }}">
+            @endif
+
             <div class="form-group">
                 <label for="email" class="col-sm-3 control-label">{{ trans('users.form.email') }}</label>
                 <div class="col-sm-7">
