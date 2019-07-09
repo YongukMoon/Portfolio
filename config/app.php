@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Laracasts\Flash\FlashServiceProvider::class,
-
+        Maknz\Slack\SlackServiceProvider::class,
     ],
 
     /*
@@ -229,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Flash' => Laracasts\Flash\Flash::class,
+        'Slack' => Maknz\Slack\Facades\Slack::class,
     ],
 
 ];
