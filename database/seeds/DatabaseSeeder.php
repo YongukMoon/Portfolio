@@ -31,13 +31,19 @@ class DatabaseSeeder extends Seeder
         }
         File::cleanDirectory($path);
         \App\Attachment::truncate();
-        $this->call(AttachmentsTableSeeder::class);
+        //$this->call(AttachmentsTableSeeder::class);
 
         \App\Comment::truncate();
         $this->call(CommentsTableSeeder::class);
 
         \App\Vote::truncate();
         $this->call(VotesTableSeeder::class);
+
+        \App\Shop\Category::truncate();
+        $this->call(CategoriesTableSeeder::class);
+
+        \App\Shop\Product::truncate();
+        $this->call(ProductsTableSeeder::class);
 
         if(config('database.default')){
             DB::statement('SET FOREIGN_KEY_CHECKS=1');

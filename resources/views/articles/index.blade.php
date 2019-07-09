@@ -7,7 +7,7 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2>{{ trans('articles.index.title') }}</h2>
+            <h2><i class="fa fa-list" aria-hidden="true"></i> {{ trans('articles.index.title') }}</h2>
         </div>
 
         <div class="text-right">

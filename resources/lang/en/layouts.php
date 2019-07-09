@@ -14,5 +14,7 @@ return [
         'btn_pw_change'=>'PW change',
         'btn_register'=>'Register',
         'language'=>'English',
+        'shop'=>'Shop',
+        'all'=>'All',
     ],
 ];

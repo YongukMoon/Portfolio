@@ -19,7 +19,21 @@
                         {{ trans('layouts.nav.articles_link') }} <span class="sr-only">(current)</span>
                     </a>
                 </li>
-                {{-- <li><a href="#">Link</a></li> --}}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{ trans('layouts.nav.shop') }} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="{{ route('products.index') }}">{{ trans('layouts.nav.all') }}</a>
+                        </li>
+                        @foreach ($allCategories as $category)
+                            <li>
+                                <a href="{{ route('products.categories', $category->slug) }}">{{ $category->{$currentLocale} }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
             </ul>
             <form class="navbar-form navbar-left" action="{{ route('articles.index') }}" method="get">
                 <div class="form-group">

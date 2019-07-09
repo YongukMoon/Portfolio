@@ -24,11 +24,12 @@
 
 <div class="form-group">
     <label for="my-dropzone">{{ trans('articles.form.file') }}</label>
-    <div id="my-dropzone" class="dropzone"></div>
 
     @if ($viewName==='articles.edit')
         @include('attachments.partial.list', ['attachments'=>$article->attachments])
     @endif
+    
+    <div id="my-dropzone" class="dropzone"></div>
 </div>
 
 <div class="form-group">

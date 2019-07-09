@@ -7,7 +7,7 @@
 @section('content')
     <div class="col-md-8 col-md-offset-2">
         <div class="page-header">
-            <h2>{{ trans('articles.edit.title') }}</h2>
+            <h2><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{ trans('articles.edit.title') }}</h2>
         </div>
 
         <form action="{{ route('articles.update', $article->id) }}" method="post" enctype="multipart/form-data">

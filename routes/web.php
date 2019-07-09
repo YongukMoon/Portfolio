@@ -122,3 +122,11 @@ Route::post('comments/{comment}/votes', [
     'as'=>'comments.votes',
     'uses'=>'CommentsController@vote'
 ]);
+
+//Product
+Route::get('products/{slug}/categories', [
+    'as'=>'products.categories',
+    'uses'=>'Shop\ProductsController@index'
+]);
+
+Route::resource('products', 'Shop\ProductsController');

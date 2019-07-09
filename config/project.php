@@ -34,4 +34,20 @@ return [
         'ko'=>'한국어',
         'en'=>'English',
     ],
+
+    'categories'=>[
+        'ko'=>[
+            'top'=>'상의',
+            'bottom'=>'하의',
+            'shoes'=>'신발',
+            'acc'=>'악세서리',
+        ],
+
+        'en'=>[
+            'top'=>'Top',
+            'bottom'=>'Bottom',
+            'shoes'=>'Shoes',
+            'acc'=>'Acc',
+        ],
+    ],
 ];

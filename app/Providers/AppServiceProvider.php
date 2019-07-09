@@ -27,7 +27,11 @@ class AppServiceProvider extends ServiceProvider
             $currentLocale=app()->getLocale();
             $currentUrl=current_url();
 
-            $view->with(compact('allTags', 'currentUser', 'currentLocale', 'currentUrl'));
+            $allCategories=\Cache::rememberForever('categories.list', function(){
+                return \App\Shop\Category::all();
+            });
+
+            $view->with(compact('allTags', 'currentUser', 'currentLocale', 'currentUrl', 'allCategories'));
         });
     }
 
