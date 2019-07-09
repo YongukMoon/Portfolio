@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-header">
-        <h1>Shop</h1>
+        <h1>{{ trans('shop.index.title') }}</h1>
     </div>
 
     <div class="row">

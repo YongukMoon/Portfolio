@@ -14,7 +14,8 @@ return [
         'btn_pw_change'=>'비밀번호 변경',
         'btn_register'=>'가입하기',
         'language'=>'한국어',
-        'shop'=>'쇼핑몰',
+        'shop'=>'쇼핑',
         'all'=>'전체품목',
+        'admin'=>'관리자',
     ],
 ];

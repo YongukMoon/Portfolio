@@ -29,9 +29,9 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Product $product)
     {
-        //
+        return view('admin.shop.create', compact('product'));
     }
 
     /**
@@ -42,7 +42,27 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'categories'=>'required',
+            'title'=>'required',
+            'price'=>'required',
+            'stock'=>'required',
+        ]);
+
+        $product=\App\Shop\Product::create([
+            'category_id'=>$request->input('categories'),
+            'title'=>$request->input('title'),
+            'price'=>$request->input('price'),
+            'stock'=>$request->input('stock'),
+        ]);
+
+        if(!$product){
+            flash(trans('flash.ProductsController.store_fail'));
+            return redirect(route('products.create'));
+        }
+
+        flash(trans('flash.ProductsController.store_success'));
+        return redirect(route('products.index'));
     }
 
     /**
@@ -62,9 +82,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('admin.shop.edit', compact('product'));
     }
 
     /**

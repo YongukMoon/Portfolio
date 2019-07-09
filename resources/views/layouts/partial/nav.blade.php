@@ -34,6 +34,11 @@
                         @endforeach
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('products.create') }}">
+                        {{ trans('layouts.nav.admin') }}
+                    </a>
+                </li>
             </ul>
             <form class="navbar-form navbar-left" action="{{ route('articles.index') }}" method="get">
                 <div class="form-group">

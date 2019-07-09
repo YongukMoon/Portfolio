@@ -28,4 +28,9 @@ return [
         'postPassword_fail'=>'The original password is incorrect',
         'postPassword_success'=>'Password change success',
     ],
+
+    'ProductsController'=>[
+        'store_success'=>'Product add success',
+        'store_fail'=>'Product add fail',
+    ],
 ];

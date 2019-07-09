@@ -16,5 +16,6 @@ return [
         'language'=>'English',
         'shop'=>'Shop',
         'all'=>'All',
+        'admin'=>'Admin',
     ],
 ];
