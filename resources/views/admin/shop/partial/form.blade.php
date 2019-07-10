@@ -2,7 +2,7 @@
     <label for="categories">카테고리</label>
     <select name="categories" class="form-control">
         @foreach ($allCategories as $category)
-            <option value="{{ $category->id }}" {{ ($product->category->id == $category->id) ? 'selected="selected"' : '' }}>
+            <option value="{{ $category->id }}" {{ ($product->category_id == $category->id) ? 'selected="selected"' : '' }}>
                 {{ $category->name }}
             </option>
         @endforeach

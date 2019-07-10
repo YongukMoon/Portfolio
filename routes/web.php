@@ -11,6 +11,10 @@
 |
 */
 
+//Admin
+Route::resource('admin', 'AdminController');
+
+//Main
 Route::get('/', 'WelcomeController@index');
 
 //Locale

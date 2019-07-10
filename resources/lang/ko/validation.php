@@ -123,6 +123,8 @@ return [
         'files'=>'파일',
         'files.*'=>'파일',
         'parent_id'=>'부모 댓글',
+        'price'=>'가격',
+        'stock'=>'재고',
     ],
 
 ];

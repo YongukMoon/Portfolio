@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Shop\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductsRequest;
 use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
@@ -40,15 +41,8 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductsRequest $request)
     {
-        $this->validate($request, [
-            'categories'=>'required',
-            'title'=>'required',
-            'price'=>'required',
-            'stock'=>'required',
-        ]);
-
         $product=\App\Shop\Product::create([
             'category_id'=>$request->input('categories'),
             'title'=>$request->input('title'),
@@ -62,7 +56,7 @@ class ProductsController extends Controller
         }
 
         flash(trans('flash.ProductsController.store_success'));
-        return redirect(route('products.index'));
+        return redirect(route('admin.index'));
     }
 
     /**
@@ -71,9 +65,9 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('shop.products.show', compact('product'));
     }
 
     /**
@@ -94,9 +88,12 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductsRequest $request, Product $product)
     {
-        //
+        $product->update($request->all());
+
+        flash(trans('flash.ProductsController.update_success'));
+        return redirect(route('products.index'));
     }
 
     /**
@@ -105,8 +102,10 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([], 201);
     }
 }

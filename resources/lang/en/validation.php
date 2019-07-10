@@ -116,6 +116,15 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title'=>'Title',
+        'content'=>'Content',
+        'tags'=>'Tag',
+        'files'=>'File',
+        'files.*'=>'File',
+        'parent_id'=>'Parent comment',
+        'price'=>'Price',
+        'stock'=>'Stock',
+    ],
 
 ];

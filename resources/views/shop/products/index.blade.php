@@ -11,15 +11,15 @@
                 <div class="thumbnail">
                     <img src="https://dummyimage.com/600x400/cccccc/fff" alt="...">
                     <div class="caption text-center">
-                        <h3><a href="">{{ $product->title }}</a></h3>
+                        <h3><a href="{{ route('products.show', $product->id) }}">{{ $product->title }}</a></h3>
                         <p>{{ $product->price }} <i class="fa fa-krw" aria-hidden="true"></i></p>
                     </div>
                 </div>
             </div>
         @endforeach
+    </div>
 
-        <div class="paginator text-center">
-            {{ $products->render() }}
-        </div>
+    <div class="paginator text-center">
+        {{ $products->render() }}
     </div>
 @endsection

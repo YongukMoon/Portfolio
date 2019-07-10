@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('products.create') }}">
+                    <a href="{{ route('admin.index') }}">
                         {{ trans('layouts.nav.admin') }}
                     </a>
                 </li>
