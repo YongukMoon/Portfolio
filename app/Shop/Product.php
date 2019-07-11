@@ -10,6 +10,10 @@ class Product extends Model
         'title', 'category_id', 'price', 'stock',
     ];
 
+    protected $with=[
+        'category',
+    ];
+
     public function category(){
         return $this->belongsTo(Category::class);
     }
